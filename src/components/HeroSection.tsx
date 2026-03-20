@@ -154,10 +154,10 @@ const HeroSection = () => {
           <img
             src="/repan.png"
             alt="Repan"
-            className="w-[150px] md:w-[100px] h-auto rounded-full absolute"
+            className="w-[125px] md:w-[100px] h-auto rounded-full absolute"
             style={{
-              transform: "translateX(175px) rotate(5deg)",
-              marginTop: "200px",
+              transform: "translateX(135px) rotate(5deg)",
+              marginTop: "10px",
             }}
           />
         </div>
