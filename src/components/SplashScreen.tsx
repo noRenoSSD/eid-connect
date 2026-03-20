@@ -38,7 +38,8 @@ const SplashScreen = ({ onEnter }: SplashScreenProps) => {
     <div
       className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden"
       style={{
-        background: "linear-gradient(135deg, #0a0e27 0%, #1a1a3e 50%, #0f0f1e 100%)",
+        background:
+          "linear-gradient(135deg, #0a0e27 0%, #1a1a3e 50%, #0f0f1e 100%)",
         opacity: exiting ? 0 : 1,
         transition: "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
       }}
@@ -72,6 +73,35 @@ const SplashScreen = ({ onEnter }: SplashScreenProps) => {
         }}
       />
 
+      {/* ── pesawat terbang ── */}
+      <div
+        className="absolute z-10 pointer-events-none"
+        style={{
+          top: "25%",
+          left: "-15%",
+          animation: "planeFly 20s cubic-bezier(0.45, 0, 0.55, 1) infinite",
+        }}
+      >
+        <div style={{ animation: "planeFloat 3s ease-in-out infinite" }}>
+          <svg
+            width="50"
+            height="50"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            style={{
+              filter: "drop-shadow(0 0 8px rgba(255,255,255,0.6))",
+              transform: "scaleX(-1) rotate(-90deg)",
+            }}
+          >
+            <path
+              d="M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"
+              fill="rgba(255,255,255,0.9)"
+            />
+          </svg>
+        </div>
+      </div>
+
       {/* ── content centered ── */}
       <div className="relative z-20 flex flex-col items-center px-4 md:px-6 max-w-md w-full">
         {/* Question */}
@@ -100,7 +130,8 @@ const SplashScreen = ({ onEnter }: SplashScreenProps) => {
                 : "hover:scale-105 active:scale-95"
             } ${correct && "scale-105 ring-2 ring-green-400"}`}
             style={{
-              animation: "fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both",
+              animation:
+                "fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both",
             }}
           >
             <img
@@ -125,7 +156,8 @@ const SplashScreen = ({ onEnter }: SplashScreenProps) => {
                 : "hover:scale-105 active:scale-95"
             } ${guessed && !correct && "ring-2 ring-red-400"}`}
             style={{
-              animation: "fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both",
+              animation:
+                "fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both",
             }}
           >
             <img
@@ -195,6 +227,39 @@ const SplashScreen = ({ onEnter }: SplashScreenProps) => {
           }
           50% {
             opacity: 1;
+          }
+        }
+        @keyframes planeFly {
+          0% {
+            transform: translateX(-15vw) translateY(0) rotate(3deg);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          25% {
+            transform: translateX(20vw) translateY(-15px) rotate(5deg);
+          }
+          50% {
+            transform: translateX(50vw) translateY(0) rotate(3deg);
+          }
+          75% {
+            transform: translateX(80vw) translateY(10px) rotate(2deg);
+          }
+          90% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(125vw) translateY(-5px) rotate(4deg);
+            opacity: 0;
+          }
+        }
+        @keyframes planeFloat {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-8px);
           }
         }
       `}</style>
