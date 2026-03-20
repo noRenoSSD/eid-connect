@@ -18,81 +18,18 @@ const HeroSection = () => {
       </video>
       {/* Overlay for desktop video */}
       <div className="hidden lg:block absolute inset-0 bg-black/30 z-0" />
+
       {/* Mobile background */}
       <div
         className="block lg:hidden absolute inset-0 w-full h-full bg-cover bg-center z-0"
         style={{ backgroundImage: "url(/foto5.jpg)" }}
       />
-      {/* ── video background ── */}
-      {/* Mobile video */}
-      <div className="block lg:hidden w-full flex flex-col items-center mb-6 z-10">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="w-full max-w-md rounded-lg shadow-lg"
-          style={{ zIndex: 2 }}
-        >
-          <source src="/video.mp4" type="video/mp4" />
-        </video>
-      </div>
+      {/* Mobile overlay */}
+      <div className="block lg:hidden absolute inset-0 bg-black/40 z-10" />
 
-      {/* ── black overlay for readability (darker) ── */}
-
-      {/* ── Mobile greeting above video ── */}
-      <div className="block lg:hidden w-full px-4 pt-8 z-10 text-center">
-        <h1
-          ref={titleRef}
-          className="font-display text-3xl md:text-4xl font-semibold text-white leading-tight tracking-tight mb-2"
-        >
-          Selamat Idul Fitri,
-          <br />
-          Teman-teman!
-        </h1>
-        <p className="text-white text-base mb-4">
-          Semoga kita semua diberi kesehatan, kebahagiaan, dan keberkahan. Amin.
-        </p>
-      </div>
-
-      {/* ── floating foto 1 & 2 (mobile only) ── */}
-      {/* Mobile: fotobooth card gabungan */}
-      <div className="block lg:hidden flex flex-col items-center justify-center mt-4 z-10">
-        <div
-          className="p-2 bg-white rounded-lg shadow-xl border-4 border-gray-300 relative flex flex-col items-center animate-float"
-          style={{ transform: "rotate(-6deg)" }}
-        >
-          <div className="flex flex-row gap-2">
-            <img
-              src="/foto1.jpg"
-              alt="Floating foto 1"
-              className="w-32 h-32 object-cover rounded"
-              style={{}}
-            />
-            <img
-              src="/foto2.jpg"
-              alt="Floating foto 2"
-              className="w-32 h-32 object-cover rounded"
-              style={{}}
-            />
-          </div>
-          <div style={{ height: "24px" }}></div>
-          <span
-            style={{
-              marginTop: "-8px",
-              fontSize: "1rem",
-              color: "#555",
-              fontWeight: "bold",
-            }}
-          >
-            foto 1 Lugri & foto 2 Sospol
-          </span>
-        </div>
-      </div>
-
-      {/* Desktop: fotobooth card di kanan agak ke tengah - miring */}
+      {/* Desktop: fotobooth cards - miring */}
       <div
-        className="hidden lg:block absolute z-10"
+        className="hidden lg:block absolute z-20"
         style={{ top: "10%", right: "12%" }}
       >
         <div
@@ -103,7 +40,6 @@ const HeroSection = () => {
             src="/foto1.jpg"
             alt="Floating foto 1"
             className="w-56 h-56 object-cover rounded"
-            style={{}}
           />
           <div style={{ height: "32px" }}></div>
           <span
@@ -125,7 +61,6 @@ const HeroSection = () => {
             src="/foto2.jpg"
             alt="Floating foto 2"
             className="w-56 h-56 object-cover rounded"
-            style={{}}
           />
           <div style={{ height: "32px" }}></div>
           <span
@@ -142,7 +77,7 @@ const HeroSection = () => {
       </div>
 
       {/* Desktop greeting at bottom left */}
-      <div className="hidden lg:block absolute left-0 bottom-0 z-10 px-6 pb-8 text-left">
+      <div className="hidden lg:block absolute left-0 bottom-0 z-20 px-6 pb-8 text-left">
         <h1
           ref={titleRef}
           className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight tracking-tight mb-2"
@@ -155,7 +90,79 @@ const HeroSection = () => {
           Semoga kita semua diberi kesehatan, kebahagiaan, dan keberkahan. Amin.
         </p>
       </div>
-      {/* Subtitle (desktop only) */}
+
+      {/* Mobile content */}
+      <div className="block lg:hidden relative z-20 flex flex-col items-center px-4 py-8 min-h-screen justify-start">
+        {/* Greeting - Heading */}
+        <h1
+          ref={titleRef}
+          className="text-3xl md:text-4xl font-semibold text-white text-center leading-tight tracking-tight mb-2 mt-8"
+        >
+          Selamat Hari Raya
+          <br />
+          Idul Fitri
+        </h1>
+
+        {/* Sub-heading */}
+        <p className="text-white/90 text-lg md:text-xl text-center mb-6 font-light">
+          Minal Aidzin Wal Faizin, Mohon Maaf Lahir dan Batin
+        </p>
+
+        {/* Video landscape dengan photobooth card di kanan */}
+        <div className="flex flex-row items-center justify-center gap-6 mb-6 w-full">
+          {/* Video dengan polaroid frame - ditengah */}
+          <div className="relative">
+            <div className="bg-gradient-to-br from-white via-gray-50 to-white p-1.5 rounded-lg shadow-2xl border border-gray-200">
+              <video
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-[280px] md:w-[320px] aspect-video object-cover rounded-md"
+              >
+                <source src="/video.mp4" type="video/mp4" />
+              </video>
+            </div>
+          </div>
+
+          {/* Fotobooth card di kanan video - portrait miring */}
+          <div
+            className="p-1.5 bg-white rounded-lg shadow-xl border border-gray-200 relative flex flex-col items-center animate-float"
+            style={{ transform: "rotate(-8deg)" }}
+          >
+            <div className="flex flex-col gap-1">
+              <img
+                src="/foto1.jpg"
+                alt="Floating foto 1"
+                className="w-20 h-24 object-cover rounded"
+              />
+              <img
+                src="/foto2.jpg"
+                alt="Floating foto 2"
+                className="w-20 h-24 object-cover rounded"
+              />
+            </div>
+            <div style={{ height: "10px" }}></div>
+            <span
+              style={{
+                marginTop: "-2px",
+                fontSize: "0.7rem",
+                color: "#555",
+                fontWeight: "bold",
+              }}
+            >
+              sospol-lugri
+            </span>
+          </div>
+        </div>
+
+        {/* Doa baik */}
+        <p className="text-white/95 text-sm md:text-base text-center max-w-xs mb-6 leading-relaxed">
+          Semoga kita semua diberi kesehatan, kebahagiaan, dan keberkahan.
+          <br />
+          Amin.
+        </p>
+      </div>
 
       <style>{`
         @keyframes float1 {
@@ -186,17 +193,22 @@ const HeroSection = () => {
             transform: translateY(-10px) rotate(0deg);
           }
         }
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px) rotate(-6deg);
+          }
+          50% {
+            transform: translateY(-10px) rotate(-6deg);
+          }
+        }
         .animate-float1 {
           animation: float1 3s ease-in-out infinite;
         }
         .animate-float2 {
           animation: float2 3s ease-in-out infinite;
         }
-        .animate-float1[style*='animationDelay: 0s'] {
-          animation-delay: 0s;
-        }
-        .animate-float2[style*='animationDelay: 1.5s'] {
-          animation-delay: 1.5s;
+        .animate-float {
+          animation: float 3s ease-in-out infinite;
         }
       `}</style>
     </section>
