@@ -13,10 +13,9 @@ const MusicToggle = ({ shouldPlay }: MusicToggleProps) => {
     // Create a silent audio context as placeholder
     // In production, replace with a real audio URL
     if (!audioRef.current) {
-      audioRef.current = new Audio();
+      audioRef.current = new Audio("/music.mp3");
       audioRef.current.loop = true;
       audioRef.current.volume = 0.3;
-      // Placeholder: no src set. Add a real audio URL here.
     }
   }, []);
 
