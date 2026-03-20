@@ -25,21 +25,21 @@ const HeroSection = () => {
         className="absolute z-10 pointer-events-none hidden lg:block"
         style={{
           top: "5%",
-          right: "1%",
+          right: "10%",
           animation: "float 4s ease-in-out infinite",
           animationDelay: "0s",
         }}
       >
-        <div className="p-2 bg-white rounded-lg shadow-xl">
-          <img
-            src="/foto1.jpg"
-            alt="Floating foto 1"
-            className="w-48 h-48 object-cover rounded"
-            style={{
-              transform: "rotate(-12deg)",
-            }}
-          />
-        </div>
+        <div className="p-2 bg-white rounded-lg shadow-xl border-4 border-gray-300 relative flex flex-col items-center" style={{ transform: 'rotate(-12deg)' }}>
+  <img
+    src="/foto1.jpg"
+    alt="Floating foto 1"
+    className="w-48 h-48 object-cover rounded"
+    style={{}}
+  />
+  <div style={{height: '32px'}}></div>
+  <span style={{marginTop: '-16px', fontSize: '1rem', color: '#555', fontWeight: 'bold'}}>foto 1 Lugri</span>
+</div>
       </div>
 
       {/* ── floating foto 2 (right side below foto 1 - desktop only) ── */}
@@ -47,21 +47,21 @@ const HeroSection = () => {
         className="absolute z-10 pointer-events-none hidden lg:block"
         style={{
           bottom: "8%",
-          right: "-3%",
+          right: "10%",
           animation: "float 5s ease-in-out infinite",
           animationDelay: "1s",
         }}
       >
-        <div className="p-2 bg-white rounded-lg shadow-xl">
-          <img
-            src="/foto2.jpg"
-            alt="Floating foto 2"
-            className="w-56 h-56 object-cover rounded"
-            style={{
-              transform: "rotate(8deg)",
-            }}
-          />
-        </div>
+        <div className="p-2 bg-white rounded-lg shadow-xl border-4 border-gray-300 relative flex flex-col items-center" style={{ transform: 'rotate(8deg)' }}>
+  <img
+    src="/foto2.jpg"
+    alt="Floating foto 2"
+    className="w-56 h-56 object-cover rounded"
+    style={{}}
+  />
+  <div style={{height: '32px'}}></div>
+  <span style={{marginTop: '-16px', fontSize: '1rem', color: '#555', fontWeight: 'bold'}}>foto 2 Sospol</span>
+</div>
       </div>
 
       {/* ── content at bottom left ── */}
