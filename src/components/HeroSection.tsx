@@ -108,50 +108,45 @@ const HeroSection = () => {
           Minal Aidzin Wal Faizin, Mohon Maaf Lahir dan Batin
         </p>
 
-        {/* Video landscape dengan photobooth card di kanan */}
-        <div className="flex flex-row items-center justify-center gap-6 mb-6 w-full">
-          {/* Video dengan polaroid frame - ditengah */}
-          <div className="relative">
-            <div className="bg-gradient-to-br from-white via-gray-50 to-white p-1.5 rounded-lg shadow-2xl border border-gray-200">
+        {/* Photobooth frame - foto 1, video, foto 2 jadi satu */}
+        <div className="flex justify-center mb-6 w-full">
+          <div
+            className="p-2 bg-white rounded-lg shadow-2xl border border-gray-200 flex flex-col items-center animate-float"
+            style={{ transform: "rotate(-6deg)" }}
+          >
+            {/* Foto 1 - landscape */}
+            <img
+              src="/foto1.jpg"
+              alt="Foto 1"
+              className="w-[200px] md:w-[240px] h-auto object-cover rounded mb-2"
+            />
+            {/* Video */}
+            <div className="bg-gradient-to-br from-white via-gray-50 to-white p-1 rounded-md border border-gray-200 mb-2">
               <video
                 autoPlay
                 loop
                 muted
                 playsInline
-                className="w-[280px] md:w-[320px] aspect-video object-cover rounded-md"
+                className="w-[200px] md:w-[240px] aspect-video object-cover rounded-sm"
               >
                 <source src="/video.mp4" type="video/mp4" />
               </video>
             </div>
-          </div>
-
-          {/* Fotobooth card di kanan video - portrait miring */}
-          <div
-            className="p-1.5 bg-white rounded-lg shadow-xl border border-gray-200 relative flex flex-col items-center animate-float"
-            style={{ transform: "rotate(-8deg)" }}
-          >
-            <div className="flex flex-col gap-1">
-              <img
-                src="/foto1.jpg"
-                alt="Floating foto 1"
-                className="w-20 h-24 object-cover rounded"
-              />
-              <img
-                src="/foto2.jpg"
-                alt="Floating foto 2"
-                className="w-20 h-24 object-cover rounded"
-              />
-            </div>
-            <div style={{ height: "10px" }}></div>
+            {/* Foto 2 - landscape */}
+            <img
+              src="/foto2.jpg"
+              alt="Foto 2"
+              className="w-[200px] md:w-[240px] h-auto object-cover rounded mb-2"
+            />
+            {/* Label */}
             <span
               style={{
-                marginTop: "-2px",
-                fontSize: "0.7rem",
+                fontSize: "0.9rem",
                 color: "#555",
                 fontWeight: "bold",
               }}
             >
-              sospol-lugri
+              lugri-dp-sospol
             </span>
           </div>
         </div>
