@@ -149,6 +149,17 @@ const HeroSection = () => {
               lugri-dp-sospol
             </span>
           </div>
+
+          {/* Repan di kanan photocard - menumpuk dikit */}
+          <img
+            src="/repan.png"
+            alt="Repan"
+            className="w-[150px] md:w-[100px] h-auto rounded-full absolute"
+            style={{
+              transform: "translateX(175px) rotate(5deg)",
+              marginTop: "200px",
+            }}
+          />
         </div>
 
         {/* Doa baik */}
