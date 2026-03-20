@@ -5,7 +5,7 @@ const HeroSection = () => {
   const subtitleRef = useScrollReveal(0.15);
 
   return (
-    <section className="relative pt-12 md:pt-20 min-h-screen flex items-end overflow-hidden">
+    <section className="relative min-h-screen flex items-end overflow-hidden">
       {/* ── video background ── */}
       <video
         autoPlay
@@ -17,55 +17,59 @@ const HeroSection = () => {
         <source src="/video.mp4" type="video/mp4" />
       </video>
 
-      {/* ── black overlay for readability ── */}
-      <div className="absolute inset-0 bg-black/30 z-0" />
+      {/* ── black overlay for readability (darker) ── */}
+      <div className="absolute inset-0 bg-black/50 z-0" />
 
-      {/* ── floating foto 1 (right side) ── */}
+      {/* ── floating foto 1 (right side - desktop only) ── */}
       <div
-        className="absolute z-10 pointer-events-none"
+        className="absolute z-10 pointer-events-none hidden lg:block"
         style={{
-          top: "12%",
-          right: "4%",
+          top: "5%",
+          right: "1%",
           animation: "float 4s ease-in-out infinite",
           animationDelay: "0s",
         }}
       >
-        <img
-          src="/foto1.jpg"
-          alt="Floating foto 1"
-          className="w-40 h-40 md:w-56 md:h-56 object-cover rounded-lg shadow-2xl"
-          style={{
-            transform: "rotate(-12deg)",
-          }}
-        />
+        <div className="p-2 bg-white rounded-lg shadow-xl">
+          <img
+            src="/foto1.jpg"
+            alt="Floating foto 1"
+            className="w-48 h-48 object-cover rounded"
+            style={{
+              transform: "rotate(-12deg)",
+            }}
+          />
+        </div>
       </div>
 
-      {/* ── floating foto 2 (right side below foto 1) ── */}
+      {/* ── floating foto 2 (right side below foto 1 - desktop only) ── */}
       <div
-        className="absolute z-10 pointer-events-none"
+        className="absolute z-10 pointer-events-none hidden lg:block"
         style={{
-          bottom: "15%",
-          right: "2%",
+          bottom: "8%",
+          right: "-3%",
           animation: "float 5s ease-in-out infinite",
           animationDelay: "1s",
         }}
       >
-        <img
-          src="/foto2.jpg"
-          alt="Floating foto 2"
-          className="w-48 h-48 md:w-64 md:h-64 object-cover rounded-lg shadow-2xl"
-          style={{
-            transform: "rotate(8deg)",
-          }}
-        />
+        <div className="p-2 bg-white rounded-lg shadow-xl">
+          <img
+            src="/foto2.jpg"
+            alt="Floating foto 2"
+            className="w-56 h-56 object-cover rounded"
+            style={{
+              transform: "rotate(8deg)",
+            }}
+          />
+        </div>
       </div>
 
       {/* ── content at bottom left ── */}
-      <div className="relative z-10 eid-container pb-12 md:pb-20 pr-0">
-        <div className="max-w-lg">
+      <div className="relative z-10 w-full px-4 md:px-8 lg:px-12 pb-6 md:pb-12 lg:pb-20">
+        <div className="max-w-2xl">
           <h1
             ref={titleRef}
-            className="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight md:leading-[1.1] tracking-tight"
+            className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white leading-tight tracking-tight"
           >
             Selamat
             <br />
@@ -76,7 +80,7 @@ const HeroSection = () => {
 
           <p
             ref={subtitleRef}
-            className="font-body text-base md:text-lg text-white/90 mt-6 leading-relaxed"
+            className="font-body text-xs sm:text-sm md:text-base lg:text-lg text-white/90 mt-3 md:mt-6 leading-relaxed max-w-xl"
             style={{ textWrap: "pretty" }}
           >
             Mohon Maaf Lahir &amp; Batin. Meskipun jarak memisahkan, doa kita
