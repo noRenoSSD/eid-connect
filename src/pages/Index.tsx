@@ -1,8 +1,6 @@
 import { useState } from "react";
 import SplashScreen from "@/components/SplashScreen";
 import HeroSection from "@/components/HeroSection";
-import ContentSection from "@/components/ContentSection";
-import ClosingSection from "@/components/ClosingSection";
 import MusicToggle from "@/components/MusicToggle";
 
 const Index = () => {
@@ -15,18 +13,18 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="h-screen overflow-hidden relative">
+      {/* ── Splash screen ── */}
       {showSplash && <SplashScreen onEnter={handleEnter} />}
 
+      {/* ── Main content ── */}
       {!showSplash && (
-        <>
-          <main className="scroll-smooth">
+        <div className="relative z-10 h-screen overflow-hidden">
+          <main>
             <HeroSection />
-            <ContentSection />
-            <ClosingSection />
           </main>
           <MusicToggle shouldPlay={musicReady} />
-        </>
+        </div>
       )}
     </div>
   );

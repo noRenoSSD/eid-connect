@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Moon, Star } from "lucide-react";
 
 interface SplashScreenProps {
   onEnter: () => void;
@@ -7,71 +6,141 @@ interface SplashScreenProps {
 
 const SplashScreen = ({ onEnter }: SplashScreenProps) => {
   const [exiting, setExiting] = useState(false);
+  const [guessed, setGuessed] = useState(false);
+  const [correct, setCorrect] = useState(false);
 
-  const handleClick = () => {
-    setExiting(true);
-    setTimeout(onEnter, 600);
+  const handleGuess = (isCorrect: boolean) => {
+    setGuessed(true);
+    if (isCorrect) {
+      setCorrect(true);
+      setTimeout(() => {
+        setExiting(true);
+        setTimeout(onEnter, 800);
+      }, 500);
+    }
+  };
+
+  const handleRefresh = () => {
+    setGuessed(false);
+    setCorrect(false);
   };
 
   return (
     <div
-      className={`fixed inset-0 z-50 flex flex-col items-center justify-center bg-eid-beige transition-opacity duration-600 ${
-        exiting ? "splash-exit" : ""
-      }`}
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center overflow-hidden"
+      style={{
+        background: "#0c0c0c",
+        opacity: exiting ? 0 : 1,
+        transition: "opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+      }}
     >
-      {/* Stars */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {[...Array(12)].map((_, i) => (
-          <Star
-            key={i}
-            className="absolute text-eid-brown/30 animate-eid-reveal"
+      {/* ── content centered ── */}
+      <div className="relative z-20 flex flex-col items-center px-6 max-w-md w-full">
+        {/* Question */}
+        <h2
+          className="font-display text-white font-semibold text-center mb-8"
+          style={{
+            fontSize: "clamp(2rem, 8vw, 3rem)",
+            animation: "fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1)",
+          }}
+        >
+          Mana Aku
+          <br />
+          Yang Asli?
+        </h2>
+
+        {/* Photo Grid - Foto 3 & 4 */}
+        <div className="grid grid-cols-2 gap-4 w-full max-w-xs">
+          {/* Foto 3 - Correct */}
+          <button
+            onClick={() => handleGuess(true)}
+            disabled={guessed}
+            className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
+              guessed && !correct
+                ? "opacity-50"
+                : "hover:scale-105 active:scale-95"
+            } ${correct && "scale-105 ring-2 ring-green-400"}`}
             style={{
-              top: `${15 + Math.random() * 60}%`,
-              left: `${10 + Math.random() * 80}%`,
-              width: 10 + Math.random() * 14,
-              animationDelay: `${i * 0.15}s`,
+              animation: "fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both",
             }}
-            fill="currentColor"
-          />
-        ))}
+          >
+            <img
+              src="/foto3.jpg"
+              alt="Foto 3"
+              className="w-full aspect-square object-cover group-hover:opacity-90 transition-opacity"
+            />
+            {guessed && correct && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                <span className="text-4xl">✓</span>
+              </div>
+            )}
+          </button>
+
+          {/* Foto 4 - Wrong */}
+          <button
+            onClick={() => handleGuess(false)}
+            disabled={guessed}
+            className={`group relative overflow-hidden rounded-lg transition-all duration-300 ${
+              guessed && correct
+                ? "opacity-50"
+                : "hover:scale-105 active:scale-95"
+            } ${guessed && !correct && "ring-2 ring-red-400"}`}
+            style={{
+              animation: "fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both",
+            }}
+          >
+            <img
+              src="/foto4.jpg"
+              alt="Foto 4"
+              className="w-full aspect-square object-cover group-hover:opacity-90 transition-opacity"
+            />
+            {guessed && !correct && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                <span className="text-4xl">✗</span>
+              </div>
+            )}
+          </button>
+        </div>
+
+        {/* Feedback & Refresh Button */}
+        {guessed && !correct && (
+          <div
+            className="flex flex-col items-center gap-3 mt-6"
+            style={{
+              animation: "fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1)",
+            }}
+          >
+            <p className="font-body text-white/60 text-sm">
+              Bukan yang itu... coba lagi!
+            </p>
+            <button
+              onClick={handleRefresh}
+              className="group flex items-center gap-2 font-body text-[11px] tracking-[0.25em] uppercase text-white/50 hover:text-white/90 transition-colors duration-400"
+            >
+              🔄 Refresh
+              <span
+                className="inline-block transition-transform duration-300 group-hover:translate-x-1"
+                aria-hidden
+              >
+                →
+              </span>
+            </button>
+          </div>
+        )}
       </div>
 
-      {/* Moon */}
-      <div
-        className="animate-eid-reveal animate-float mb-8"
-        style={{ animationDelay: "0.2s" }}
-      >
-        <Moon
-          className="text-eid-blue"
-          size={72}
-          strokeWidth={1.2}
-          fill="hsl(var(--eid-blue-light))"
-        />
-      </div>
-
-      {/* Title */}
-      <h1
-        className="font-display text-3xl md:text-5xl font-semibold text-eid-text text-center px-8 animate-eid-reveal"
-        style={{ animationDelay: "0.5s" }}
-      >
-        Selamat Idul Fitri
-      </h1>
-      <p
-        className="font-display text-xl md:text-2xl text-eid-blue mt-2 animate-eid-reveal"
-        style={{ animationDelay: "0.7s" }}
-      >
-        1447 H
-      </p>
-
-      {/* Button */}
-      <button
-        onClick={handleClick}
-        className="mt-12 px-8 py-3 rounded-full bg-primary text-primary-foreground font-body text-sm font-medium tracking-wide
-          hover:shadow-lg active:scale-[0.97] transition-all duration-200 animate-eid-reveal"
-        style={{ animationDelay: "1.1s" }}
-      >
-        Buka Ucapan
-      </button>
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
     </div>
   );
 };
